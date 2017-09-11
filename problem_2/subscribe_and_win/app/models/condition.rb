@@ -19,18 +19,18 @@ class Condition < ApplicationRecord
   end
 
   def check_equal?(subscriber)
-    decision_params['value'].include?(subscriber.id)
+    decision_params['value'].to_i == subscriber.id
   end
 
-  def check_multipile?(subscriber)
-    (subscriber.id % decision_params['value']).zero?
+  def check_multiple?(subscriber)
+    (subscriber.id % decision_params["value"].to_i).zero?
   end
 
   def check_grater_than?(subscriber)
-    subscriber.id > decision_params['value']
+    subscriber.id > decision_params["value"].to_i
   end
 
   def check_less_than?(subscriber)
-    subscriber.id < decision_params['value']
+    subscriber.id < decision_params["value"].to_i
   end
 end

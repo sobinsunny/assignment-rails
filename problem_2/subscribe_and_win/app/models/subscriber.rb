@@ -5,6 +5,6 @@ class Subscriber < ApplicationRecord
 
   def select_prizes
     applicable_prize = Condition.get_applicable_prizes(self)
-    @prize_list.each(&:reduce_count)
+    applicable_prize.each(&:reduce_count)
   end
 end
