@@ -1,0 +1,15 @@
+<h1>Prizes#index</h1>
+<p>Find me in app/views/prizes/index.html.erb</p>
+
+<%= link_to "Create New Prize", new_prize_path %>
+<ul class="list-group">
+	<% @prizes.each do |prize|%>
+		<li class="list-group-item">
+			<%= link_to prize.name, prize_path(prize) %>
+			<span class="badge">
+				<%= prize.stock_count %>
+			</span>
+		<li/>
+	<%end%>
+</ul>
+

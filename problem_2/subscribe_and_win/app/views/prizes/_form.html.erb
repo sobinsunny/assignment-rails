@@ -1,0 +1,7 @@
+<%= form_for prize do |form| %>
+  Prize Name: <%= form.text_field :name %><br />
+   <%= error_message form,:email%>
+    Prize Count: <%= form.number_field :stock_count %><br />
+    Associates Condition :  <%=form.select :condition_id,options_from_collection_for_select(Condition.all,:id,:name) %>
+  <%= form.submit %>
+<% end %>

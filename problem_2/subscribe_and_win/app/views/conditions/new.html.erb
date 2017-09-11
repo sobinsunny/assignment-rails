@@ -1,0 +1,10 @@
+<h1>Conditions#new</h1>
+
+<%= form_for @condition do |f| %>
+  Condition Name : 
+  <%= f.text_field :name %>
+  <%= rule_select_box %>
+  <%= number_field_tag "condition[decision_params][value]" %>
+  <%= f.submit %>
+<%end%>
+

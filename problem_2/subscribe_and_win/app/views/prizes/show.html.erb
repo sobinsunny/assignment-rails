@@ -1,0 +1,11 @@
+<h1>Prizes#show</h1>
+
+
+Name : <%=@prize.name %>
+<br/>
+Count : <%=@prize.stock_count%>
+<br/>
+Associated Condition name : <%=@prize.condition.name%>
+<br/>
+<%= link_to 'View all prizes ', prizes_path %>
+<%= link_to "Edit", edit_prize_path(@prize)%>
