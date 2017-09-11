@@ -1,2 +1,14 @@
-<h1>Subscribers#new</h1>
-<p>Find me in app/views/subscribers/new.html.erb</p>
+<h1>Subscribe Here</h1>
+
+
+
+
+<%= form_for @subscriber do |form| %>
+  Email: <%= form.text_field :email %><br />
+  
+   <%= error_message form,:email%>
+
+  <%= form.submit class: "btn btn-info btn-lg" %>
+
+
+<% end %>

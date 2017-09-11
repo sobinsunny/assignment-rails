@@ -1,14 +1,31 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>SubscribeAndWin</title>
-    <%= csrf_meta_tags %>
+<head>
+	<title>SubscribeAndWin</title>
+	<%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
-    <%= yield %>
-  </body>
-</html>
+<body>
+	<nav >
+		<ul class="nav nav-pills">
+			<li role="presentation right" class="active"> 
+				<%=link_to "Home", root_path %>
+			</li>
+
+			<li role="presentation right" class="active"> 
+				<%=link_to "Admin", admin_dashbord_path %>
+			</li>
+		</ul>
+	</nav>
+
+	<div class="container" style="margin-top:150px">
+		<% flash.each do |key, value| %>
+		<div class="alert <%= flash_class(key) %> " role="alert"><%= value %></div>
+		<% end %>
+		<%= yield %>
+	</body>
+
+	</html>
