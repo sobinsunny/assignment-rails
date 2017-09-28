@@ -1,10 +1,36 @@
 <h1>Create Conditions</h1>
+<div class="panel panel-default">
+	<div class="panel-body">
+		<%= form_for @condition do |f| %>
+			<div class="form-group">
+				<label for="formGroupExampleInput">
+					Condition Name : 
+				</label>
+				<%= f.text_field :name, class: "form-control" %>
+			</div>
+			<div class="form-group">
+				<label for="formGroupExampleInput">
+					SeleBasic rule
+				</label>
+				<%= rule_select_box %>
+			</div>
+			<div class="form-group">
+				<label for="formGroupExampleInput"> Enter the params</label>
+				<%= number_field_tag "condition[decision_params][value]", class: "form-control" , min: '1' %>
+			</div>
 
-<%= form_for @condition do |f| %>
-  Condition Name : 
-  <%= f.text_field :name %>
-  <%= rule_select_box %>
-  <%= number_field_tag "condition[decision_params][value]" %>
-  <%= f.submit %>
-<%end%>
+			<div class="form-group">
+				<label for="formGroupExampleInput"> Range Min</label>
+					<%= number_field_tag "condition[decision_params][start]", class: "form-control" , min: '1' %>
+				<label for="formGroupExampleInput">    Range Max</label>
+					<%= number_field_tag "condition[decision_params][end]", class: "form-control" , min: '1' %>
+			</div>
+
+			<div class="form-group">
+				<%= f.submit "Create", class: "btn btn-primary"%>
+			</div>
+
+		<%end%>
+	</div>
+</div>
 

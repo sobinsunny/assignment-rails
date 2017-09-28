@@ -11,5 +11,5 @@ Rails.application.routes.draw do
     end
   end
   resources :prizes
-  resources :conditions, only: %i[new create index]
+  resources :conditions
 end

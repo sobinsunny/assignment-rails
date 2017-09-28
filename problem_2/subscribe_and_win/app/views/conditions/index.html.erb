@@ -4,7 +4,7 @@
 <ul class="list-group">
 	<% @conditions.each do |condition|%>
 		<li class="list-group-item">
-			<%= condition.name%>
+			<%= condition.name%> <%= link_to "Delete" , condition_path(condition), method: :delete, style: "float: right" %>
 		</li>
 	<%end%>
 </ul>
