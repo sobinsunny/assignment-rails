@@ -3,34 +3,36 @@ class Condition < ApplicationRecord
 
   def self.get_applicable_prizes(subscriber)
     prizes = []
+    @subscriber = subscriber
     Condition.all.each do |condition|
       rule = condition.decision_params['rule']
       prizes << if rule == '='
-                  condition.prizes.available_items if condition.check_equal?(subscriber)
+                  condition.prizes.available_items if condition.check_equal?
                 elsif rule == '%'
-                  condition.prizes.available_items if condition.check_multiple?(subscriber)
+                  condition.prizes.available_items if condition.check_multiple?
                 elsif rule == '<'
-                  condition.prizes.available_items if condition.check_grater_than?(subscriber)
+                  condition.prizes.available_items if condition.check_grater_than?
                 elsif rule == '>'
-                  condition.prizes.available_items if condition.check_less_than?(subscriber)
+                  condition.prizes.available_items if condition.check_less_than?
+                end
           end
-    end
     prizes.flatten.compact
   end
 
-  def check_equal?(subscriber)
-    decision_params['value'].to_i == subscriber.id
+  def check_equal?
+    decision_params['value'].to_i == @subscriber.id
   end
 
-  def check_multiple?(subscriber)
-    (subscriber.id % decision_params["value"].to_i).zero?
+  def check_multiple?
+    (@subscriber.id % decision_params["value"].to_i).zero?
   end
 
-  def check_grater_than?(subscriber)
-    subscriber.id > decision_params["value"].to_i
+  def check_grater_than?
+    @subscriber.id > decision_params["value"].to_i
   end
 
-  def check_less_than?(subscriber)
-    subscriber.id < decision_params["value"].to_i
+  def check_less_than?
+    @subscriber.id < decision_params["value"].to_i
   end
+
 end

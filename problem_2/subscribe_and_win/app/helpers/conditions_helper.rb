@@ -3,6 +3,7 @@ module ConditionsHelper
 	BASIC_RULES = {
 		"Equal": "=",
 		"Grater Than": ">",
+		"Less Than": "<",
 		"Multipile of": "%"
 	}
 
